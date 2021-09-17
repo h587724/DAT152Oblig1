@@ -6,11 +6,7 @@ var ourList = document.getElementById("listOfItems");
 const taskBox = document.querySelector("task-box");
 const items = [];
 
-function showModal (){
-    modal.style.display = "block";
-    modal.style.display = "none";
-}
-
+//Make a modal box
 newTaskButton.onclick = function(){
     modal.style.display = "block";
 }
@@ -19,8 +15,12 @@ span.onclick = function() {
     modal.style.display = "none";
 }
 
+//Listens to the "Add Task" button and calls newTaskCallBack function
 addTaskButton.addEventListener("click", newTaskCallBack);
 
+//Gets elements from the fields "Task title" and "Status"
+//Then, the method creates a Task object with attributes "title" and "status" and pushes it to a global array "items"
+//Furthermore, an html string is spawned, consisting of list item: Title, Status, and two buttons with onclick methods.
 function newTaskCallBack() {
     let taskTitle = document.getElementById("taskTitle").value;
     let taskStatus = document.getElementById("status").value;
@@ -33,6 +33,7 @@ function newTaskCallBack() {
     modal.style.display = "none";
 }
 
+//Merges all the tasks from the array to the html page
 function show(){
     ourList.innerHTML = "";
     let html = "";
@@ -45,26 +46,12 @@ function show(){
     ourList.innerHTML += html;
 }
 
-/*function showItems(){
-    for (let i = 0; i < items.length; i++){
-        ourList.innerHTML += JSON.stringify(items[i], null, 2)/*"<li>" + items[i].title + " " + items[i].status + "<button id=\"modify"+ items[i].title + "\" class=\"button\"> Modify" +
-        "</button>" + "<button id=\"remove" + items[i].title + "\" class=\"button\">Remove</button></li>";
-    }
-}*/
-
-/*function activateItem(){
-    for (i = 0; i < items.size; i++){
-        let listModifyButton = document.getElementById("modify" + keys[i]);
-        let listRemoveButton = document.getElementById("remove" + keys[i]);
-        listModifyButton.addEventListener('click', modify(keys[i]));
-        listRemoveButton.addEventListener("click", remove(keys[i]));
-    }
-}*/
-
+//Modifies a task (meant to) after a modify button is pressed.
 function modify (clicked_id){
     console.log("kjhg");
 }
 
+//Removes a Task from the arrays and spawns the new array via the show() method
 function remove (clicked_id){
     var clickedString = String(clicked_id);
     var taskTitle = clickedString.split("remove_").pop();
@@ -72,38 +59,3 @@ function remove (clicked_id){
     items.splice(index, 1);
     show();
 }
-/*
-const openEls = document.querySelectorAll("[data-open]");
-const isVisible = "is-visible";
-
-for(const el of openEls) {
-    el.addEventListener("click", function() {
-        const modalId = this.dataset.open;
-        document.getElementById("popUp").classList.add(isVisible);
-    });
-}
-
-const closeEls = document.querySelectorAll("[data-close]");
-const isVisible = "is-visible";
-
-for (const el of closeEls) {
-    el.addEventListener("click", function() {
-        this.parentElement.parentElement.parentElement.classList.remove(isVisible);
-    });
-}
-
-const isVisible = "is-visible";
-
-document.addEventListener("click", e => {
-    if (e.target == document.querySelector(".popUp.is-visible")) {
-        document.querySelector(".popUp.is-visible").classList.remove(isVisible);
-    }
-});
-
-const isVisible = "is-visible";
-
-document.addEventListener("keyup", e => {
-    if (e.key == "Escape" && document.querySelector(".popUp.is-visible")) {
-        document.querySelector(".modal.is-visible").classList.remove(isVisible);
-    }
-});*/
