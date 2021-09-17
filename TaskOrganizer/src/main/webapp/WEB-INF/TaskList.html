@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task List</title>
+</head>
+<body>
+  <h1>Tasks</h1></br>
+  <task-list>
+    <button id="newTask" class="buttonOrdinary">New task</button>
+      <task-box>
+
+
+
+          <div id="modal">
+              <div id="modalContent">
+                  <p> Title: <input id="taskTitle" type="text"></p>
+                  <p> Status: <select id="status">
+                      <option value="ACTIVE">ACTIVE</option>
+                      <option value="DONE">DONE</option>
+                      <option value="WAITING">WAITING</option>
+                  </select></p>
+                  <button id="addTask" class="buttonOrdinary">Add task</button>
+                  <span class="close">&times</span>
+              </div>
+          </div>
+      </task-box>
+      <ul id="listOfItems">
+      </ul>
+  </task-list>
+
+</body>
+<script src="TaskBox.js"></script>
+<link rel="stylesheet" href="style.css">
+</html>
